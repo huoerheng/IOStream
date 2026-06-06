@@ -27,11 +27,12 @@ public class IO {
 
 
         long l = System.currentTimeMillis();
-        FileOutputStream fos = new FileOutputStream("c.txt");
+        FileOutputStream fos = new FileOutputStream("d.txt");
         FileInputStream fis = new FileInputStream("file.txt");
         int b;
-        while ((b=fis.read()) != -1){
-            fos.write(b);
+        byte[] bytes = new byte[1024*1024];
+        while ((b=fis.read(bytes)) != -1){
+            fos.write(bytes,0,b);
         }
 
         fos.close();
